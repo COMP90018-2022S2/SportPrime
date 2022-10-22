@@ -78,6 +78,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -87,14 +89,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Map<String, Object> user = new HashMap<>();
-        user.put("first", "Ada");
-        user.put("last", "Lovelace");
-        user.put("born", 1815);
+    }
+
+    public void sumbitCreateActivity(View view)
+    {
+
+        String eventName = ((EditText)findViewById(R.id.editActivityName)).getText().toString();
+        String eventDescription = ((EditText)findViewById(R.id.editActivityDescription)).getText().toString();
+        String eventStartTime = ((EditText)findViewById(R.id.editActivityStartTime)).getText().toString();
+        Map<String, Object> activity = new HashMap<>();
+        activity.put("name", eventName);
+        activity.put("description", eventDescription);
+        activity.put("start_time", eventStartTime);
 //
         // Add a new document with a generated ID
-        db.collection("user")
-                .add(user)
+        db.collection("event")
+                .add(activity)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -108,4 +118,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }

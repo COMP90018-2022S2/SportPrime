@@ -7,21 +7,89 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="218dp"
-        android:layout_height="65dp"
+        android:id="@+id/editActivityName"
+        android:layout_width="240dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
-        android:hint="Please"
+        android:hint="@string/please_enter_activity_name"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="@string/activity_name"
         android:textAllCaps="false"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editActivityDescription"
+        android:layout_width="240dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="136dp"
+        android:ems="10"
+        android:hint="@string/please_enter_activity_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/createActivityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="@string/create_your_activity"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.038" />
 
+    <Button
+        android:id="@+id/createActivitySubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="casual"
+        android:onClick="sumbitCreateActivity"
+        android:text="@string/create"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#000000" />
+
+    <EditText
+        android:id="@+id/editActivityStartTime"
+        android:layout_width="240dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="200dp"
+
+        android:autofillHints=""
+        android:clickable="false"
+        android:ems="10"
+        android:hint="@string/please_enter_start_time"
+        android:inputType="time"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TimePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="276dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

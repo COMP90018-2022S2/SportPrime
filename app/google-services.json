@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "290258255596",
+    "firebase_url": "https://comp90018-project-sport-p-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "comp90018-project-sport-p",
+    "storage_bucket": "comp90018-project-sport-p.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290258255596:android:6ce8ced7306a0604bbafc9",
+        "android_client_info": {
+          "package_name": "com.example.myapplication2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290258255596-oe2o5kn05k8ojfrft66r065gbg1g2doh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxtggq3NAFiVVtqAIJ5brlf-OTsgM-kBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290258255596-oe2o5kn05k8ojfrft66r065gbg1g2doh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

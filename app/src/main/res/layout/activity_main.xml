@@ -9,32 +9,49 @@
     <EditText
         android:id="@+id/editActivityName"
         android:layout_width="240dp"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
         android:ems="10"
         android:hint="@string/please_enter_activity_name"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:textAllCaps="false"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editActivityTag"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="@string/please_enter_tag"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityCost"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
     <EditText
         android:id="@+id/editActivityDescription"
         android:layout_width="240dp"
-        android:layout_height="56dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="@string/please_enter_activity_name"
+        android:hint="@string/please_enter_description"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:textAllCaps="false"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editActivityName"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/createActivityTitle"
@@ -70,10 +87,10 @@
     <EditText
         android:id="@+id/editActivityStartTime"
         android:layout_width="240dp"
-        android:layout_height="53dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="200dp"
 
+        android:layout_marginTop="4dp"
         android:autofillHints=""
         android:clickable="false"
         android:ems="10"
@@ -81,15 +98,96 @@
         android:inputType="time"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityDescription"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editActivityEndTime"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+
+        android:autofillHints=""
+        android:clickable="false"
+        android:ems="10"
+        android:hint="@string/please_enter_end_time"
+        android:inputType="datetime"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityStartTime"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editActivityLocation"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+
+        android:autofillHints=""
+        android:clickable="false"
+        android:ems="10"
+        android:hint="@string/please_enter_location"
+        android:inputType="text"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityEndTime"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editActivityPeople"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+
+        android:autofillHints=""
+        android:clickable="false"
+        android:ems="10"
+        android:hint="@string/please_enter_max_people"
+        android:inputType="number"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityLocation"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editActivityCost"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+
+        android:autofillHints=""
+        android:clickable="false"
+        android:ems="10"
+        android:hint="@string/please_enter_cost"
+        android:inputType="number"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityPeople"
+        tools:ignore="TextContrastCheck" />
+
+    <Switch
+        android:id="@+id/activityIsPublic"
+        android:layout_width="132dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="16dp"
+        android:checked="true"
+        android:minHeight="48dp"
+        android:text="@string/make_public"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TimePicker
-        android:id="@+id/datePicker1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="276dp"
-        android:timePickerMode="spinner"
+    <TextView
+        android:id="@+id/alertTextView"
+        android:layout_width="238dp"
+        android:layout_height="126dp"
+        android:text="@string/alert_received"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,7 @@ import com.google.firebase.firestore.Transaction;
 import com.google.firebase.firestore.WriteBatch;
 
 import android.content.DialogInterface;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -74,6 +75,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.lang.String;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -121,24 +123,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String message = null;
                 String result = checkAllFilled();
-                if (result == "good"){
+                if (result.matches( "good")){
                     submitCreateActivity(view);
                 }  else {
                     message = "Please fill in " + result + " .";
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setCancelable(true);
+                    builder.setTitle("Informarion required");
+                    builder.setMessage(message);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    });
+                    builder.show();
                 }
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setCancelable(true);
-                builder.setTitle("Informarion required");
-                builder.setMessage(message);
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //do something
 
-                    }
-                });
-                builder.show();
-                //submitCreateActivity(view);
+
             }
 
         });
@@ -147,16 +148,20 @@ public class MainActivity extends AppCompatActivity {
     public void submitCreateActivity(View view)
     {
 
-        String activityName = ((EditText)findViewById(R.id.editActivityName)).getText().toString();
-        String activityDescription = ((EditText)findViewById(R.id.editActivityDescription)).getText().toString();
-        String activityStartTime = ((EditText)findViewById(R.id.editActivityStartTime)).getText().toString();
-        String activityEndTime = ((EditText)findViewById(R.id.editActivityEndTime)).getText().toString();
+
         Map<String, Object> activity = new HashMap<>();
-        activity.put("name", activityName);
-        activity.put("description", activityDescription);
-        activity.put("start_time", activityStartTime);
-        activity.put("end_time",activityEndTime);
-//
+        activity.put("name", activityName.getText().toString());
+        activity.put("description", activityDescription.getText().toString());
+        activity.put("start_time", activityStartTime.getText().toString());
+        activity.put("end_time",activityEndTime.getText().toString());
+        activity.put("location",activityLocation.getText().toString());
+        activity.put("cost",activityCost.getText().toString());
+        activity.put("tag",activityTag.getText().toString());
+        activity.put("max_people",activityMaxPeople.getText().toString());
+        activity.put("current_people",1);
+        activity.put("host_id",00000);
+        activity.put("is_public", activityIsPublic.isChecked());
+
         // Add a new document with a generated ID
         db.collection("activity")
                 .add(activity)
@@ -164,19 +169,59 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setCancelable(true);
+                        builder.setTitle("Activity successfully created");
+                        builder.setMessage("Redirecting to the main page");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //heading to the main page
+                            }
+                        });
+                        builder.show();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(TAG, "Error adding document", e);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setCancelable(true);
+                        builder.setTitle("Something went wrong -.-!");
+                        builder.setMessage("Please try again");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //do nothing
+                            }
+                        });
+                        builder.show();
                     }
                 });
     }
 
     public String checkAllFilled(){
-
-        return "bad";
+        if (TextUtils.isEmpty(activityName.getText().toString().trim())){
+            return "avtivity name";
+        }
+        if (TextUtils.isEmpty(activityDescription.getText().toString().trim())){
+            return "avtivity description";
+        }
+        if (TextUtils.isEmpty(activityStartTime.getText().toString().trim())){
+            return "start time";
+        }
+        if (TextUtils.isEmpty(activityEndTime.getText().toString().trim())){
+            return "end time";
+        }
+        if (TextUtils.isEmpty(activityLocation.getText().toString().trim())){
+            return "avtivity location";
+        }
+        if (TextUtils.isEmpty(activityMaxPeople.getText().toString().trim())){
+            return "max people";
+        }
+        return "good";
     }
 
 }

@@ -119,34 +119,43 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String message = null;
+                String result = checkAllFilled();
+                if (result == "good"){
+                    submitCreateActivity(view);
+                }  else {
+                    message = "Please fill in " + result + " .";
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setCancelable(true);
-                builder.setTitle("");
-                builder.setMessage("");
+                builder.setTitle("Informarion required");
+                builder.setMessage(message);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //do something
+
                     }
                 });
                 builder.show();
-                sumbitCreateActivity(view);
+                //submitCreateActivity(view);
             }
 
         });
     }
 
-    public void sumbitCreateActivity(View view)
+    public void submitCreateActivity(View view)
     {
 
         String activityName = ((EditText)findViewById(R.id.editActivityName)).getText().toString();
         String activityDescription = ((EditText)findViewById(R.id.editActivityDescription)).getText().toString();
         String activityStartTime = ((EditText)findViewById(R.id.editActivityStartTime)).getText().toString();
+        String activityEndTime = ((EditText)findViewById(R.id.editActivityEndTime)).getText().toString();
         Map<String, Object> activity = new HashMap<>();
         activity.put("name", activityName);
         activity.put("description", activityDescription);
         activity.put("start_time", activityStartTime);
+        activity.put("end_time",activityEndTime);
 //
         // Add a new document with a generated ID
         db.collection("activity")
@@ -167,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
     public String checkAllFilled(){
 
-        return "Good";
+        return "bad";
     }
 
 }

@@ -167,8 +167,9 @@
 
     <TextView
         android:id="@+id/createActivityTitle"
-        android:layout_width="411dp"
-        android:layout_height="43dp"
+        android:layout_width="325dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
         android:background="#73FDED"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/create_your_activity"
@@ -179,7 +180,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -249,8 +250,10 @@
     <Button
         android:layout_width="42dp"
         android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="368dp"
         android:background="@drawable/ic_back"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-5dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

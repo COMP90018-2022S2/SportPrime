@@ -88,6 +88,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.content.Intent;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -222,6 +223,10 @@ public class MainActivity extends AppCompatActivity {
             return "max people";
         }
         return "good";
+    }
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, ActivityMap.class);
+        startActivity(switchActivityIntent);
     }
 
 }

@@ -249,7 +249,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="32dp"
         android:fontFamily="sans-serif-smallcaps"
-        android:onClick="sumbitCreateActivity"
         android:text="@string/create"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
@@ -304,10 +303,13 @@
         app:srcCompat="@drawable/different_sports" />
 
     <Button
-        android:layout_width="42dp"
-        android:layout_height="48dp"
-        android:background="@drawable/ic_back"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-5dp" />
+        android:id="@+id/switchTest"
+        android:layout_width="123dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="172dp"
+        android:text="Switch to camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText activityMaxPeople;
     private EditText activityCost;
     private Switch activityIsPublic;
+    private Button switchButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
         activityLocation = (EditText) findViewById(R.id.editActivityLocation);
         activityIsPublic = (Switch) findViewById(R.id.activityIsPublic);
         //alertView = (TextView) findViewById(R.id.alertTextView);
+        switchButton = (Button) findViewById(R.id.switchTest);
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchActivities();
+            }
+        });
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -225,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
         return "good";
     }
     private void switchActivities() {
-        Intent switchActivityIntent = new Intent(this, ActivityMap.class);
+        Intent switchActivityIntent = new Intent(this, CameraActivity.class);
         startActivity(switchActivityIntent);
     }
 

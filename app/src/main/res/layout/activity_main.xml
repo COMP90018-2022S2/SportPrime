@@ -4,98 +4,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< Updated upstream
+    android:background="#C4F8F5"
+    android:backgroundTintMode="multiply"
+=======
+    android:background="#D5EFFB"
+>>>>>>> Stashed changes
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/editActivityName"
-        android:layout_width="240dp"
+<<<<<<< Updated upstream
+        android:layout_width="411dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+=======
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="104dp"
+>>>>>>> Stashed changes
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_activity_name"
         android:importantForAutofill="no"
         android:inputType="text"
+        android:textAlignment="gravity"
         android:textAllCaps="false"
+<<<<<<< Updated upstream
+        android:textSize="25sp"
+=======
+        android:textSize="24sp"
+>>>>>>> Stashed changes
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck"
+        tools:textAlignment="gravity" />
 
     <EditText
-        android:id="@+id/editActivityTag"
-        android:layout_width="240dp"
+        android:id="@+id/editActivityEndTime"
+        android:layout_width="411dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+
+        android:autofillHints=""
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+        android:clickable="false"
+        android:drawableEnd="@drawable/ic_time_end"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="@string/please_enter_end_time"
+        android:inputType="datetime"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityStartTime"
+        tools:ignore="TextContrastCheck"
+        tools:textAlignment="gravity" />
+
+    <EditText
+        android:id="@+id/editActivityPeople"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
+
+        android:autofillHints=""
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+        android:clickable="false"
+        android:drawableEnd="@drawable/ic_people"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="@string/please_enter_max_people"
+        android:inputType="number"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityLocation"
+        tools:ignore="TextContrastCheck"
+        tools:textAlignment="gravity" />
+
+    <EditText
+        android:id="@+id/editActivityCost"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
+
+        android:autofillHints=""
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+        android:clickable="false"
+        android:drawableEnd="@drawable/ic_cost"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="@string/please_enter_cost"
+        android:inputType="number"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityPeople"
+        tools:ignore="TextContrastCheck"
+        tools:textAlignment="gravity" />
+
+    <EditText
+<<<<<<< Updated upstream
+        android:id="@+id/editActivityTag"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+        android:drawableEnd="@drawable/ic_tag"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_tag"
         android:importantForAutofill="no"
         android:inputType="text"
         android:textAllCaps="false"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editActivityCost"
-        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck"
+        tools:textAlignment="gravity" />
 
     <EditText
         android:id="@+id/editActivityDescription"
-        android:layout_width="240dp"
+        android:layout_width="411dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_description"
         android:importantForAutofill="no"
         android:inputType="text"
         android:textAllCaps="false"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editActivityName"
-        tools:ignore="TextContrastCheck" />
-
-    <TextView
-        android:id="@+id/createActivityTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:text="@string/create_your_activity"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
-
-    <Button
-        android:id="@+id/createActivitySubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="casual"
-        android:onClick="sumbitCreateActivity"
-        android:text="@string/create"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#000000" />
+        tools:ignore="TextContrastCheck"
+        tools:textAlignment="gravity" />
 
     <EditText
         android:id="@+id/editActivityStartTime"
-        android:layout_width="240dp"
+        android:layout_width="411dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
 
-        android:layout_marginTop="4dp"
+=======
+        android:id="@+id/editActivityStartTime"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+
+        android:layout_marginTop="16dp"
+>>>>>>> Stashed changes
         android:autofillHints=""
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:clickable="false"
+<<<<<<< Updated upstream
+        android:drawableEnd="@drawable/ic_time_start"
+=======
+        android:drawableEnd="@drawable/ic_time"
+>>>>>>> Stashed changes
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_start_time"
         android:inputType="time"
+<<<<<<< Updated upstream
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityDescription"
+        tools:ignore="TextContrastCheck"
+        tools:textAlignment="gravity" />
+
+    <EditText
+        android:id="@+id/editActivityLocation"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
+=======
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editActivityDescription"
@@ -103,15 +187,18 @@
 
     <EditText
         android:id="@+id/editActivityEndTime"
-        android:layout_width="240dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
 
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:clickable="false"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_end_time"
         android:inputType="datetime"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editActivityStartTime"
@@ -119,15 +206,41 @@
 
     <EditText
         android:id="@+id/editActivityLocation"
-        android:layout_width="240dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
+>>>>>>> Stashed changes
 
+        android:layout_marginTop="16dp"
         android:autofillHints=""
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:clickable="false"
+        android:drawableEnd="@drawable/ic_location"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_location"
         android:inputType="text"
+<<<<<<< Updated upstream
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityEndTime"
+        tools:ignore="TextContrastCheck"
+        tools:textAlignment="gravity" />
+
+    <TextView
+        android:id="@+id/createActivityTitle"
+        android:layout_width="411dp"
+        android:layout_height="43dp"
+        android:background="#73FDED"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/create_your_activity"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#243EBD"
+        android:textSize="34sp"
+=======
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editActivityEndTime"
@@ -135,59 +248,198 @@
 
     <EditText
         android:id="@+id/editActivityPeople"
-        android:layout_width="240dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
 
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:clickable="false"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_max_people"
         android:inputType="number"
+        android:textSize="24sp"
+>>>>>>> Stashed changes
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< Updated upstream
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/createActivitySubmit"
+        android:layout_width="335dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:onClick="sumbitCreateActivity"
+        android:text="@string/create"
+=======
         app:layout_constraintTop_toBottomOf="@+id/editActivityLocation"
         tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editActivityCost"
-        android:layout_width="240dp"
+        android:layout_width="400dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
 
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:clickable="false"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/please_enter_cost"
         android:inputType="number"
+>>>>>>> Stashed changes
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#000000" />
+
+    <EditText
+        android:id="@+id/editActivityTag"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="@string/please_enter_tag"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textAllCaps="false"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editActivityPeople"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityCost"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editActivityDescription"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="@string/please_enter_description"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editActivityName"
         tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/createActivityTitle"
+        android:layout_width="411dp"
+        android:layout_height="39dp"
+        android:background="#9DE1DB"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/create_your_activity"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#001CA6"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.003" />
+
+    <Button
+        android:id="@+id/createActivitySubmit"
+        android:layout_width="360dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:onClick="sumbitCreateActivity"
+        android:text="@string/create"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#0003D6" />
 
     <Switch
         android:id="@+id/activityIsPublic"
-        android:layout_width="132dp"
+<<<<<<< Updated upstream
+        android:layout_width="186dp"
         android:layout_height="48dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="656dp"
+        android:layout_marginEnd="208dp"
+=======
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="648dp"
+        android:layout_marginEnd="232dp"
+>>>>>>> Stashed changes
         android:checked="true"
+        android:fontFamily="sans-serif-smallcaps"
         android:minHeight="48dp"
         android:text="@string/make_public"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/alertTextView"
-        android:layout_width="238dp"
-        android:layout_height="126dp"
+<<<<<<< Updated upstream
+        android:layout_width="227dp"
+        android:layout_height="112dp"
+        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/alert_received"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="#009688"
+        android:textSize="34sp"
+=======
+        android:layout_width="299dp"
+        android:layout_height="144dp"
+        android:text="@string/alert_received"
+        android:textAlignment="center"
+        android:textColor="#388E3C"
+        android:textSize="48sp"
+>>>>>>> Stashed changes
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="411dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/common_google_signin_btn_text_light_focused"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toTopOf="@+id/editActivityName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/different_sports" />
+
+    <Button
+        android:layout_width="42dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_back"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-5dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

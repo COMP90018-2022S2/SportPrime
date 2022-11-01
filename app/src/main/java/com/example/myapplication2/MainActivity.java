@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         createActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(MainActivity.this, CreateActivity.class);
+                Intent switchActivityIntent = new Intent(MainActivity.this, MapsActivityCurrentPlace.class);
                 startActivity(switchActivityIntent);
             }
         });

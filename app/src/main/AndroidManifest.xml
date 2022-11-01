@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -22,6 +24,8 @@
             android:value="AIzaSyCOL-HJLDGHKuKtGkyz2WaOF7FQpzNGF7g" />
 
         <activity
+            android:name=".Register"></activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -29,7 +33,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -37,8 +40,38 @@
         <activity android:name=".CreateActivity"></activity>
         <activity android:name=".CameraActivity"></activity>
         <activity android:name=".MainPage"></activity>
+
         <activity android:name=".ActivityMap"></activity>
         <activity android:name=".MapActivity"></activity>
+
+        <activity
+            android:name="com.example.myapplication2.MapsActivityCurrentPlace"
+            android:exported="true"
+            android:label="@string/title_activity_maps">
+
+        </activity>
+
+
+        <activity
+            android:name=".Login"
+            android:exported="true">
+
+        </activity>
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!--
+             The API key for Google Maps-based APIs.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
+
+
     </application>
 
 </manifest>

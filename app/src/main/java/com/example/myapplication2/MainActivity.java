@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mainPage;
     private Button camera;
     private Button createActivity;
+    private Button viewActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         mainPage = (Button) findViewById(R.id.navi1);
         camera = (Button) findViewById(R.id.navi2);
         createActivity = (Button) findViewById(R.id.navi3);
+        viewActivity = (Button) findViewById(R.id.navi5);
         mainPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent switchActivityIntent = new Intent(MainActivity.this, MapsActivityCurrentPlace.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        viewActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent switchActivityIntent = new Intent(MainActivity.this, ActivityList.class);
                 startActivity(switchActivityIntent);
             }
         });

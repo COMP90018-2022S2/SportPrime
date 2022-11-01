@@ -2,8 +2,10 @@ package com.example.myapplication2;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
@@ -16,11 +18,21 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainPage extends AppCompatActivity {
+    private TextView tvActivityName;
+    private TextView tvCost;
+    private TextView tvLocation;
+    private TextView tvDate;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+        tvActivityName = findViewById(R.id.tvActivityName);
+        tvCost = findViewById(R.id.tvCost);
+        tvLocation = findViewById(R.id.tvLocation);
+        tvDate = findViewById(R.id.tvDate);
         db.collection("activity")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

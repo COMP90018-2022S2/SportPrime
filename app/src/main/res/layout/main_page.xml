@@ -80,6 +80,7 @@
         <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/mTabLayout"
             app:tabIndicatorColor="#9AFAE4">
 
             <com.google.android.material.tabs.TabItem
@@ -90,18 +91,19 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/mBtnMap"
                 android:text="Find Gym" />
 
 
         </com.google.android.material.tabs.TabLayout>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="60dp"
-            android:text="Football match"
+            android:text=" "
             android:textColor="#0F0F0F"
             android:textSize="20sp"
             android:textStyle="bold" />

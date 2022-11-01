@@ -49,9 +49,10 @@ public class ActivityList extends AppCompatActivity {
                         if (!queryDocumentSnapshots.isEmpty()){
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for(DocumentSnapshot d: list){
-                                Activity a = d.toObject(Activity.class);
-                                activityList.add(a);
-
+                                //Activity a = d.toObject(Activity.class);
+                                //activityList.add(a);
+                                Log.d(TAG, "id is " + d.getId());
+                                Log.d(TAG, "cost is " + d.get("cost"));
                             }
                         }
                     }

@@ -62,7 +62,7 @@ public class MainPage extends AppCompatActivity {
                         ActivityCompat.requestPermissions(MainPage.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
                         return;
                     }
-                    Intent intent = new Intent(MainPage.this,MapActivity.class);
+                    Intent intent = new Intent(MainPage.this,ShowNearbyGym.class);
                     startActivity(intent);
                 }
             }

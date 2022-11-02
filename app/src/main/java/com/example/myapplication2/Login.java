@@ -55,8 +55,10 @@ public class Login extends AppCompatActivity {
                 txtPassword = edtPassword.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(txtEmail)) {
-                    if (txtEmail.matches(emailPattern)) {
+                    if (true) {//txtEmail.matches(emailPattern)
                         if (!TextUtils.isEmpty(txtPassword)) {
+                            Intent intent = new Intent(Login.this, MainActivity.class);
+                            startActivity(intent);
                             Toast.makeText(Login.this, "User Login Successfully", Toast.LENGTH_SHORT).show();
                         } else {
                             edtPassword.setError("Password Field can't be empty");

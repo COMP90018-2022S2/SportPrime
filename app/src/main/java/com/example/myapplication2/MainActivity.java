@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(MainActivity.this, ShowNearbyGym.class);
+                Intent switchActivityIntent = new Intent(MainActivity.this, MainPage.class);
                 startActivity(switchActivityIntent);
             }
         });

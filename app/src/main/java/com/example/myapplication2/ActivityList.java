@@ -42,21 +42,49 @@ public class ActivityList extends AppCompatActivity {
         myAdapter = new MyAdapter(this,activityList);
         recyclerView.setAdapter(myAdapter);
 
-        db.collection("activity").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        //        db.collection("activity").get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if (!queryDocumentSnapshots.isEmpty()){
+//                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+//                            for(DocumentSnapshot d: list){
+//                                Activity a = d.toObject(Activity.class);
+//                                a.activityName = d.get("name").toString();
+//                                a.activityCost = d.get("cost").toString();
+//                                a.activityLocation = d.get("location").toString();
+//                                a.activityDate = "1111";
+//                                a.activityTime = d.get("start_time").toString();
+//                                activityList.add(a);
+//                                Log.d(TAG, "This is a print:" + a.getActivityCost());
+//
+//                            }
+//                        }
+//                    }
+//                });
+
+        db.collection("activity")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()){
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                            for(DocumentSnapshot d: list){
-                                //Activity a = d.toObject(Activity.class);
-                                //activityList.add(a);
-                                Log.d(TAG, "id is " + d.getId());
-                                Log.d(TAG, "cost is " + d.get("cost"));
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Activity a = document.toObject(Activity.class);
+                                a.activityName = document.get("name").toString();
+                                a.activityCost = document.get("cost").toString();
+                                a.activityLocation = document.get("location").toString();
+                                a.activityDate = document.get("end_time").toString();
+                                a.activityTime = document.get("start_time").toString();
+                                activityList.add(a);
+                                Log.d(TAG, document.getId() + " => " + activityList);
                             }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
+        myAdapter.notifyDataSetChanged();
 
 
     }

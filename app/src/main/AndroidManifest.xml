@@ -6,6 +6,9 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -37,6 +40,7 @@
         <activity android:name=".CreateActivity"></activity>
         <activity android:name=".CameraActivity"></activity>
         <activity android:name=".MainPage"></activity>
+        <activity android:name=".FeedBackActivity"></activity>
 
         <activity android:name=".ActivityMap"></activity>
 
@@ -62,6 +66,19 @@
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.myapplication2.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                >
+            </meta-data>
+        </provider>
 
         <service
             android:name=".utils.FetchAddressIntentService"

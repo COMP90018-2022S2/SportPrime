@@ -2,6 +2,7 @@ package com.example.myapplication2;
 
 import android.animation.Animator;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
@@ -297,10 +298,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         } else {
 
             Intent data = new Intent();
-            data.putExtra(SimplePlacePicker.SELECTED_ADDRESS, addressOutput);
-            data.putExtra(SimplePlacePicker.LOCATION_LAT_EXTRA, currentMarkerPosition.latitude);
-            data.putExtra(SimplePlacePicker.LOCATION_LNG_EXTRA, currentMarkerPosition.longitude);
-            setResult(RESULT_OK, data);
+            data.putExtra("address", (String) addressOutput);
+            data.putExtra("latitude", (double)currentMarkerPosition.latitude);
+            data.putExtra("longitude", (double)currentMarkerPosition.longitude);
+            setResult(Activity.RESULT_OK, data);
             finish();
         }
     }

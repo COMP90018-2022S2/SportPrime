@@ -24,10 +24,9 @@
         android:id="@+id/view3"
         android:layout_width="412dp"
         android:layout_height="578dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="#ECECEC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -57,13 +56,12 @@
     <EditText
         android:id="@+id/editActivityName"
 
-        android:layout_width="172dp"
+        android:layout_width="161dp"
 
 
-   
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/common_google_signin_btn_text_light_normal_background"
 
         android:ems="10"
@@ -72,14 +70,13 @@
         android:hint="@string/please_enter_activity_name"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:textAlignment="gravity"
+        android:textAlignment="center"
+
         android:textAllCaps="false"
 
         android:textColor="#000000"
 
-        android:textSize="25sp"
-
-        android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck"
@@ -101,7 +98,6 @@
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="25sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editActivityName"
         tools:ignore="TextContrastCheck"
@@ -111,8 +107,8 @@
         android:id="@+id/editActivityTag"
         android:layout_width="330dp"
         android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:drawableStart="@drawable/ic_tag"
         android:ems="10"
@@ -198,13 +194,13 @@
         tools:ignore="TextContrastCheck"
         tools:textAlignment="gravity" />
 
-    <EditText
+    <TextView
         android:id="@+id/editActivityLocation"
         android:layout_width="330dp"
         android:layout_height="50dp"
 
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:clickable="false"
@@ -212,24 +208,24 @@
         android:drawableStart="@drawable/ic_location"
         android:ems="10"
         android:fontFamily="sans-serif-smallcaps"
-        android:hint="@string/please_enter_location"
-        android:inputType="text"
+        android:hint="Please select location"
 
-        android:textSize="25sp"
-        android:textStyle="bold"
+
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editActivityEndTime"
         tools:ignore="TextContrastCheck"
-        tools:textAlignment="gravity" />
+        tools:textAlignment="center" />
 
     <EditText
         android:id="@+id/editActivityPeople"
-        android:layout_width="180dp"
-        android:layout_height="50dp"
+        android:layout_width="162dp"
+        android:layout_height="46dp"
 
 
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
 
         android:autofillHints=""
         android:background="@drawable/common_google_signin_btn_text_light_normal_background"
@@ -295,8 +291,8 @@
         android:layout_width="186dp"
         android:layout_height="48dp"
 
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="96dp"
 
         android:checked="true"
         android:fontFamily="sans-serif-smallcaps"
@@ -363,13 +359,13 @@
 
     <Button
         android:id="@+id/selectLLocation1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="120dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="137dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="60dp"
+        android:text="Location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editActivityLocation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

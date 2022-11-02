@@ -3,6 +3,7 @@ package com.example.myapplication2;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +35,7 @@ import com.google.firebase.firestore.Source;
 import com.google.firebase.firestore.Transaction;
 import com.google.firebase.firestore.WriteBatch;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.text.TextUtils;
 import android.util.Log;
@@ -92,25 +94,35 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.content.Intent;
 
+import org.w3c.dom.Text;
+
 
 public class CreateActivity extends AppCompatActivity {
+    private static final int REQUEST_GET_MAP_LOCATION = 0;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button submitButton;
     //private TextView alertView;
     private EditText activityName;
     private EditText activityDescription;
-    private EditText activityLocation;
+    private TextView activityLocation;
     private EditText activityStartTime;
     private EditText activityEndTime;
     private EditText activityTag;
     private EditText activityMaxPeople;
     private EditText activityCost;
+    private EditText activityDate;
     private Switch activityIsPublic;
     private Button selectLocation;
+    private double latitude;
+    private double longitude;
+    private String activityLocationString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_main);
         submitButton = (Button) findViewById(R.id.createActivitySubmit);
         activityName = (EditText) findViewById(R.id.editActivityName);
@@ -120,7 +132,8 @@ public class CreateActivity extends AppCompatActivity {
         activityTag = (EditText) findViewById(R.id.editActivityTag);
         activityMaxPeople = (EditText) findViewById(R.id.editActivityPeople);
         activityCost = (EditText) findViewById(R.id.editActivityCost);
-        activityLocation = (EditText) findViewById(R.id.editActivityLocation);
+        activityLocation = (TextView) findViewById(R.id.editActivityLocation);
+        activityDate = (EditText) findViewById(R.id.editActivityDate);
         activityIsPublic = (Switch) findViewById(R.id.activityIsPublic);
         selectLocation = (Button) findViewById(R.id.selectLLocation1);
         //alertView = (TextView) findViewById(R.id.alertTextView);
@@ -175,6 +188,9 @@ public class CreateActivity extends AppCompatActivity {
         activity.put("current_people",1);
         activity.put("host_id",00000);
         activity.put("is_public", activityIsPublic.isChecked());
+        activity.put("location_latitude", Double.toString(latitude));
+        activity.put("location_longitude", Double.toString(longitude));
+        activity.put("date",activityDate.getText().toString());
 
         // Add a new document with a generated ID
         db.collection("activity")
@@ -184,12 +200,13 @@ public class CreateActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                         AlertDialog.Builder builder = new AlertDialog.Builder(CreateActivity.this);
-                        builder.setCancelable(true);
+                        builder.setCancelable(false);
                         builder.setTitle("Activity successfully created");
                         builder.setMessage("Redirecting to the main page");
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
                                 //heading to the main page
                             }
                         });
@@ -218,10 +235,10 @@ public class CreateActivity extends AppCompatActivity {
 
     public String checkAllFilled(){
         if (TextUtils.isEmpty(activityName.getText().toString().trim())){
-            return "avtivity name";
+            return "activity name";
         }
         if (TextUtils.isEmpty(activityDescription.getText().toString().trim())){
-            return "avtivity description";
+            return "activity description";
         }
         if (TextUtils.isEmpty(activityStartTime.getText().toString().trim())){
             return "start time";
@@ -230,16 +247,31 @@ public class CreateActivity extends AppCompatActivity {
             return "end time";
         }
         if (TextUtils.isEmpty(activityLocation.getText().toString().trim())){
-            return "avtivity location";
+            return "activity location";
         }
         if (TextUtils.isEmpty(activityMaxPeople.getText().toString().trim())){
             return "max people";
+        }
+        if (TextUtils.isEmpty(activityDate.getText().toString().trim())){
+            return "date";
         }
         return "good";
     }
     private void switchActivities() {
         Intent switchActivityIntent = new Intent(this, MapActivity.class);
-        startActivity(switchActivityIntent);
+        startActivityForResult(switchActivityIntent, REQUEST_GET_MAP_LOCATION);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_GET_MAP_LOCATION && resultCode == Activity.RESULT_OK) {
+            latitude = data.getDoubleExtra("latitude", 0.0);
+            longitude = data.getDoubleExtra("longitude", 0.0);
+            activityLocationString = data.getStringExtra("address");
+            activityLocation.setText(activityLocationString);
+            activityLocation.setTextSize(10);
+        }
     }
 
 }

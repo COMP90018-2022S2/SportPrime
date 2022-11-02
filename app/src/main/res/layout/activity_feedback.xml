@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+
+
+        <EditText
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:id="@+id/editActivityName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="activity name"
+            android:background="@drawable/bg_edit"
+            android:paddingStart="4dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/bg_edit"
+            android:id="@+id/editActivityPeople"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/please_enter_max_people"
+            android:paddingStart="4dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/bg_edit"
+            android:id="@+id/editActivityLocation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/please_enter_location"
+            android:paddingStart="4dp" />
+
+        <TextView
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/please_enter_location"
+            android:text="Rating"
+            android:textColor="#333333"
+            android:textSize="24sp" />
+
+        <RatingBar
+            android:layout_marginTop="@dimen/_8sdp"
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:numStars="5"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:rating="0" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/please_enter_location"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Feedback"
+            android:textColor="#333333"
+            android:textSize="24sp" />
+
+        <EditText
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/bg_edit"
+            android:id="@+id/etContent"
+            android:padding="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:gravity="top"
+            android:hint="@string/please_enter_feedback"
+            android:paddingStart="4dp" />
+        <ImageView
+            android:id="@+id/ivImg"
+            android:background="@drawable/bg_edit"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:src="@drawable/ic_baseline_add_24"
+            android:scaleType="centerCrop"/>
+
+        <Button
+            android:id="@+id/btSubmit"
+            android:layout_margin="@dimen/_16sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

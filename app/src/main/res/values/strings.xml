@@ -2,19 +2,31 @@
     <string name="app_name">SportP</string>
     <string name="activity_name">Activity name</string>
     <string name="create_your_activity">Create Your Activity</string>
-    <string name="please_enter_activity_name">Please enter activity name</string>
+    <string name="please_enter_activity_name">activity name</string>
     <string name="create">Create!</string>
-    <string name="please_enter_start_time">Please enter start time</string>
+    <string name="please_enter_start_time">start time</string>
     <string name="start_time">Start time</string>
     <string name="activity_description">Activity description</string>
     <string name="make_public">Make public</string>
-    <string name="please_enter_description">Please enter description</string>
-    <string name="please_enter_end_time">Please enter end time</string>
-    <string name="please_enter_location">Please enter location</string>
-    <string name="please_enter_max_people">Please enter max people</string>
-    <string name="please_enter_cost">Please enter total cost</string>
-    <string name="please_enter_tag">Please enter tag</string>
+    <string name="please_enter_description">description</string>
+    <string name="please_enter_end_time">end time</string>
+    <string name="please_enter_location">location</string>
+    <string name="please_enter_max_people">max people</string>
+    <string name="please_enter_cost">total cost</string>
+    <string name="please_enter_tag">tag</string>
     <string name="alert_received">Alert received!</string>
+
+    <string name="show_activity">Show Activity</string>
+    <string name="end_time">end time</string>
+    <string name="activity_location">activity location</string>
+    <string name="activity_max_people">max people</string>
+    <string name="activity_cost">cost</string>
+    <string name="number_of_participants">Number of participants</string>
+    <string name="activity_tag">activity tag</string>
+    <string name="join_activity">Join</string>
+    <string name="activity_date">activity date</string>
+    <string name="host_id">Host ID</string>
+
     <string name="todo">TODO</string>
     <string name="title_activity_maps">Current Place Details</string>
     <string name="default_info_title">Default Location</string>
@@ -31,5 +43,6 @@
     <string name="confirm_pickup">Confirm pickup</string>
     <string name="confirm_dest">Confirm destination</string>
     <string name="failed_select_location">failed to select location please try again</string>
+
 
 </resources>

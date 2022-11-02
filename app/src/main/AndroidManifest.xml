@@ -5,12 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,10 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication2"
-        tools:targetApi="32"
-        tools:replace="android:theme">
-
-
+        tools:targetApi="31">
         <activity
             android:name=".ActivityList"
             android:exported="false">
@@ -45,21 +36,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
-        <activity android:name=".CreateActivity"></activity>
-        <activity android:name=".CameraActivity"></activity>
-        <activity android:name=".MainPage"></activity>
-        <activity android:name=".FeedBackActivity"></activity>
-
-        <activity android:name=".ActivityMap"></activity>
-
-        <activity
-            android:name=".ShowNearbyGym">
-
-        </activity>
-
-
+        <activity android:name=".CreateActivity" />
+        <activity android:name=".CameraActivity" />
+        <activity android:name=".MainPage" />
         <activity
             android:name=".MapsActivityCurrentPlace"
             android:exported="true"
@@ -67,30 +46,6 @@
         <activity
             android:name=".Login"
             android:exported="true" />
-
-
-        </activity>
-        <activity android:name=".MapActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.myapplication2.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"
-                >
-            </meta-data>
-        </provider>
-
-        <service
-            android:name=".utils.FetchAddressIntentService"
-            android:exported="false" />
 
         <meta-data
             android:name="android.app.lib_name"
@@ -101,7 +56,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
-
     </application>
 
 </manifest>

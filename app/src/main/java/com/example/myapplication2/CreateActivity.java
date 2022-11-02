@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
@@ -106,7 +104,6 @@ public class CreateActivity extends AppCompatActivity {
     private EditText activityMaxPeople;
     private EditText activityCost;
     private Switch activityIsPublic;
-    private Button selectLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,16 +119,14 @@ public class CreateActivity extends AppCompatActivity {
         activityCost = (EditText) findViewById(R.id.editActivityCost);
         activityLocation = (EditText) findViewById(R.id.editActivityLocation);
         activityIsPublic = (Switch) findViewById(R.id.activityIsPublic);
-        selectLocation = (Button) findViewById(R.id.selectLLocation1);
         //alertView = (TextView) findViewById(R.id.alertTextView);
 //
-        selectLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchActivities();
-            }
-        });
-
+//        switchButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                switchActivities();
+//            }
+//        });
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -238,7 +233,7 @@ public class CreateActivity extends AppCompatActivity {
         return "good";
     }
     private void switchActivities() {
-        Intent switchActivityIntent = new Intent(this, MapActivity.class);
+        Intent switchActivityIntent = new Intent(this, MainPage.class);
         startActivity(switchActivityIntent);
     }
 

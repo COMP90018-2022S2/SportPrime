@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(MainActivity.this, CameraActivity.class);
+                Intent switchActivityIntent = new Intent(MainActivity.this, FeedBackActivity.class);
                 startActivity(switchActivityIntent);
             }
         });

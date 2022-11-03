@@ -32,7 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 // [START maps_marker_on_map_ready]
 public class ShowLocationWithMarker extends AppCompatActivity
         implements OnMapReadyCallback {
-    private double LAT = -37f;
+    private double LAT = 37f;
     private double LON = 144f;
     // [START_EXCLUDE]
     // [START maps_marker_get_map_async]
@@ -41,7 +41,7 @@ public class ShowLocationWithMarker extends AppCompatActivity
         super.onCreate(savedInstanceState);
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_maps);
-
+        receiveIntent();
         // Get the SupportMapFragment and request notification when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -53,10 +53,10 @@ public class ShowLocationWithMarker extends AppCompatActivity
         Intent intent = getIntent();
 
         if (intent.hasExtra("LAT")){
-            LAT = intent.getDoubleExtra("LAT",-37f);
+            LAT = intent.getDoubleExtra("LAT",37f);
         }
         if (intent.hasExtra("LON")){
-            LON = intent.getDoubleExtra("LON",144f);
+            LON = intent.getDoubleExtra("LON",106f);
         }
 
     }
@@ -84,7 +84,7 @@ public class ShowLocationWithMarker extends AppCompatActivity
             .position(tgt)
             .title("Display Location"));
         // [START_EXCLUDE silent]
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom((tgt),30));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom((tgt),17.5f));
 
         // [END_EXCLUDE]
     }

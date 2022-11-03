@@ -219,10 +219,10 @@ public class MainPage extends AppCompatActivity {
                 Intent intent2 = new Intent(MainPage.this, CreateActivity.class);
                 startActivity(intent2);
                 break;
-//            case R.id.nav_main:
-//                Intent intent3 = new Intent(MainPage.this, MainPage.class);
-//                startActivity(intent3);
-//                break;
+            case R.id.nav_feedback:
+                Intent intent3 = new Intent(MainPage.this, FeedBackActivity.class);
+                startActivity(intent3);
+                break;
             default:
                 break;
 

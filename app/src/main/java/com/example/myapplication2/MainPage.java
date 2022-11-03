@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,10 +47,19 @@ public class MainPage extends AppCompatActivity {
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
     ActionBarDrawerToggle drawerToogle;
+    ImageButton btnFilter1;
+    ImageButton btnFilter2;
+    ImageButton btnFilter3;
+    ImageButton btnFilter4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+        btnFilter1 = (ImageButton) findViewById(R.id.imageButton);
+        btnFilter2 = (ImageButton) findViewById(R.id.imageButton2);
+        btnFilter3 = (ImageButton) findViewById(R.id.imageButton3);
+        btnFilter4 = (ImageButton) findViewById(R.id.imageButton4);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,7 +83,7 @@ public class MainPage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         activityList = new ArrayList<>();
-        myAdapter = new MyAdapter(this,activityList);
+        myAdapter = new MyAdapter(this, activityList);
         recyclerView.setAdapter(myAdapter);
 
         db.collection("activity")
@@ -108,12 +119,12 @@ public class MainPage extends AppCompatActivity {
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if("Find Gym".equals(tab.getText())){
+                if ("Find Gym".equals(tab.getText())) {
                     if (ActivityCompat.checkSelfPermission(MainPage.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainPage.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(MainPage.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
                         return;
                     }
-                    Intent intent = new Intent(MainPage.this,ShowNearbyGym.class);
+                    Intent intent = new Intent(MainPage.this, ShowNearbyGym.class);
                     startActivity(intent);
                 }
             }
@@ -133,7 +144,39 @@ public class MainPage extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainPage.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         }
 
+
+        btnFilter1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter1Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        btnFilter2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter2Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        btnFilter3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter3Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        btnFilter4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter4Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+
     }
+
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

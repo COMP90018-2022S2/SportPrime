@@ -62,13 +62,17 @@ public class MainPage extends AppCompatActivity {
                                 Activity a = document.toObject(Activity.class);
                                 a.activityName = getDocumentByKey(document, "name");
                                 a.activityCost = getDocumentByKey(document, "cost");
-                                a.activityLocation = getDocumentByKey(document, "location");
+                                a.longitude = Double.parseDouble(getDocumentByKey(document, "location_longitude"));
+                                a.latitude = Double.parseDouble(getDocumentByKey(document, "location_latitude"));
+                                a.id = document.getId();
+                                a.location = getDocumentByKey(document, "location");
                                 a.activityDate = getDocumentByKey(document, "end_time");
                                 a.activityTime = getDocumentByKey(document, "start_time");
                                 activityList.add(a);
-                                Log.d(TAG, document.getId() + " => " + a.getActivityCost());
+                                //Log.d(TAG, document.getId() + " => " + a.getActivityCost());
+                                Log.d(TAG, "this is id " + document.getId());
                             }
-                            Log.d(TAG, String.valueOf(activityList.size()));
+                            //Log.d(TAG, String.valueOf(activityList.size()));
                             myAdapter.setActivityList(activityList);
                             myAdapter.notifyDataSetChanged();
                         } else {

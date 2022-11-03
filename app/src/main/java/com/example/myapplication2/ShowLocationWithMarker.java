@@ -14,9 +14,11 @@
 
 package com.example.myapplication2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication2.utils.SimplePlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -30,7 +32,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 // [START maps_marker_on_map_ready]
 public class ShowLocationWithMarker extends AppCompatActivity
         implements OnMapReadyCallback {
-
+    private double LAT = -37f;
+    private double LON = 144f;
     // [START_EXCLUDE]
     // [START maps_marker_get_map_async]
     @Override
@@ -46,6 +49,17 @@ public class ShowLocationWithMarker extends AppCompatActivity
     }
     // [END maps_marker_get_map_async]
     // [END_EXCLUDE]
+    private void receiveIntent(){
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("LAT")){
+            LAT = intent.getDoubleExtra("LAT",-37f);
+        }
+        if (intent.hasExtra("LON")){
+            LON = intent.getDoubleExtra("LON",144f);
+        }
+
+    }
 
     // [START_EXCLUDE silent]
     /**
@@ -65,12 +79,12 @@ public class ShowLocationWithMarker extends AppCompatActivity
         // Add a marker in Sydney, Australia,
         // and move the map's camera to the same location.
         // [END_EXCLUDE]
-        LatLng sydney = new LatLng(-33.87365, 151.20689);
+        LatLng tgt = new LatLng(LAT, LON);
         googleMap.addMarker(new MarkerOptions()
-            .position(sydney)
-            .title("Marker in Sydney"));
+            .position(tgt)
+            .title("Display Location"));
         // [START_EXCLUDE silent]
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom((sydney),30));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom((tgt),30));
 
         // [END_EXCLUDE]
     }

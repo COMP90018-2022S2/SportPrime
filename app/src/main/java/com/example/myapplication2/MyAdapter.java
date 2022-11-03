@@ -34,21 +34,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            id = itemView.findViewById(R.id.idDisplay);
+//            id = itemView.findViewById(R.id.idDisplay);
             activityName = itemView.findViewById(R.id.tvActivityName);
             activityCost = itemView.findViewById(R.id.tvCost);
             activityLocation = itemView.findViewById(R.id.tvLocation);
             activityDate = itemView.findViewById(R.id.tvDate);
             activityTime = itemView.findViewById(R.id.tvTime);
-            itemView.findViewById(R.id.buttonDetail).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(view.getContext(), id.getText(), Toast.LENGTH_SHORT).show();
-                    Intent tgt = new Intent (view.getContext(),ShowActivity.class);
-                    tgt.putExtra("id", id.getText());
-                    view.getContext().startActivity(tgt);
-                }
-            });
+//            itemView.findViewById(R.id.buttonDetail).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Toast.makeText(view.getContext(), id.getText(), Toast.LENGTH_SHORT).show();
+//                    Intent tgt = new Intent (view.getContext(),ShowActivity.class);
+//                    tgt.putExtra("id", id.getText());
+//                    view.getContext().startActivity(tgt);
+//                }
+//            });
 
         }
 
@@ -70,10 +70,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Activity activity = activityList.get(position);
         holder.activityName.setText(activity.getActivityName());
         holder.activityCost.setText(activity.getActivityCost());
-        holder.activityLocation.setText(activity.location);
+        holder.activityLocation.setText(activity.getActivityLocation());
         holder.activityDate.setText(activity.getActivityDate());
         holder.activityTime.setText(activity.getActivityTime());
-        holder.id.setText(activity.id);
+//        holder.id.setText(activity.id);
     }
 
     @Override

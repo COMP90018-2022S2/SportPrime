@@ -38,6 +38,10 @@
         <activity android:name=".CameraActivity"></activity>
         <activity android:name=".MainPage"></activity>
         <activity android:name=".FeedBackActivity"></activity>
+        <activity android:name=".Filter1Activity"></activity>
+        <activity android:name=".Filter2Activity"></activity>
+        <activity android:name=".Filter3Activity"></activity>
+        <activity android:name=".Filter4Activity"></activity>
 
         <activity android:name=".ActivityMap"></activity>
 

@@ -24,6 +24,13 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/idDisplay"
+            android:layout_width="5dp"
+            android:layout_height="6dp"
+            android:text="TextView"
+            android:visibility="invisible" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -113,7 +120,7 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonDetail"
             android:layout_width="100dp"
             android:layout_height="48dp"
             android:layout_marginLeft="240dp"

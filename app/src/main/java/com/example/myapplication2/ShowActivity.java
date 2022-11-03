@@ -155,9 +155,10 @@ public class ShowActivity extends AppCompatActivity{
                     } else {
                         userList = document.get("user_list").toString();
 
-                        String user[] = userList.split(",");
-                        Log.d(TAG, "this is zero string " +hostId);
+//                        String user[] = userList.split(",");
+//                        Log.d(TAG, "this is zero string " +hostId);
                         List<String> names = new ArrayList<>(Arrays.asList(userList.split(",")));
+
                         if (names.contains(hostId)){
                             joinButton.setText("Leave Activity");
                             joinButton.setOnClickListener(new View.OnClickListener() {
@@ -185,11 +186,10 @@ public class ShowActivity extends AppCompatActivity{
                                 @Override
                                 public void onClick(View view) {
                                     //Join
+                                    names.remove("");
                                     names.add(hostId);
                                     String str = names.toString();
-                                    Log.d(TAG, "this is first string " +str);
                                     str = str.substring(1,str.length() -1).trim();
-                                    Log.d(TAG, "this is second string " +str);
                                     Map<String, Object> update =new HashMap<>();
                                     update.put("user_list", str);
                                     update.put("current_people", String.valueOf(max-available + 1));

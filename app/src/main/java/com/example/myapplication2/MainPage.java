@@ -9,6 +9,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,10 +20,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabItem;
+
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -30,10 +34,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicMarkableReference;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -48,15 +53,29 @@ public class MainPage extends AppCompatActivity {
     FirebaseFirestore db;
     MyAdapter myAdapter;
     ArrayList<Activity> activityList;
+
+    ImageButton btnFilter1;
+    ImageButton btnFilter2;
+    ImageButton btnFilter3;
+    ImageButton btnFilter4;
+
+
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
     ActionBarDrawerToggle drawerToogle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+
+
+        btnFilter1 = (ImageButton)findViewById(R.id.imageButton);
+        btnFilter2 = (ImageButton)findViewById(R.id.imageButton2);
+        btnFilter3 = (ImageButton)findViewById(R.id.imageButton3);
+        btnFilter4 = (ImageButton)findViewById(R.id.imageButton4);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,6 +90,7 @@ public class MainPage extends AppCompatActivity {
 
 
         mDrawer.addDrawerListener(drawerToggle);
+
 
         recyclerView = findViewById(R.id.activity_list);
         db = FirebaseFirestore.getInstance();
@@ -94,7 +114,7 @@ public class MainPage extends AppCompatActivity {
                                 a.longitude = Double.parseDouble(getDocumentByKey(document, "location_longitude"));
                                 a.latitude = Double.parseDouble(getDocumentByKey(document, "location_latitude"));
                                 a.id = document.getId();
-                                a.location = getDocumentByKey(document, "location");
+                                a.activityLocation = getDocumentByKey(document, "location");
                                 a.activityDate = getDocumentByKey(document, "end_time");
                                 a.activityTime = getDocumentByKey(document, "start_time");
                                 activityList.add(a);
@@ -138,6 +158,35 @@ public class MainPage extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(MainPage.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainPage.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         }
+
+        btnFilter1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter1Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        btnFilter2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter2Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        btnFilter3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter3Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        btnFilter4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchActivityIntent = new Intent(MainPage.this, Filter4Activity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
 
     }
     @Override

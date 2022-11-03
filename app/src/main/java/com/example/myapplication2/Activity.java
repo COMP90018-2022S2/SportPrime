@@ -1,7 +1,7 @@
 package com.example.myapplication2;
 
 public class Activity {
-    String activityName, activityCost, activityDate, activityTime, id, location;
+    String activityName, activityCost, activityDate, activityTime, id, activityLocation;
     Double longitude,latitude;
 
     public String getActivityName() {
@@ -10,6 +10,10 @@ public class Activity {
 
     public String getActivityCost() {
         return activityCost;
+    }
+
+    public String getActivityLocation() {
+        return activityLocation;
     }
 
     public double getLongitude() {

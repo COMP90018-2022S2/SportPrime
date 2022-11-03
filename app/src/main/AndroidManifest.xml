@@ -65,6 +65,13 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity
+            android:name=".ShowLocationWithMarker"
+            android:label="Activity Location"
+            android:exported="true">
+
+        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.myapplication2.fileprovider"

@@ -105,7 +105,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonDetail"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginRight="16dp"
@@ -116,7 +116,12 @@
 
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/idDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:text="TextView"
+        android:visibility="invisible" />
 
 
 </androidx.cardview.widget.CardView>

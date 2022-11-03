@@ -44,6 +44,7 @@
     <string name="confirm_pickup">Confirm pickup</string>
     <string name="confirm_dest">Confirm destination</string>
     <string name="failed_select_location">failed to select location please try again</string>
-
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
 </resources>

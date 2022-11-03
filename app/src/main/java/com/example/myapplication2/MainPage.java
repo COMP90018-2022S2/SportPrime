@@ -23,21 +23,35 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainPage extends AppCompatActivity {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private TextView activityName;
     private TabLayout mTabLayout;
+    RecyclerView recyclerView;
+    FirebaseFirestore db;
+    MyAdapter myAdapter;
+    ArrayList<Activity> activityList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
-        activityName = (TextView) findViewById(R.id.textView_test);
+
+        recyclerView = findViewById(R.id.activity_list);
+        db = FirebaseFirestore.getInstance();
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        activityList = new ArrayList<>();
+        myAdapter = new MyAdapter(this,activityList);
+        recyclerView.setAdapter(myAdapter);
+
         db.collection("activity")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -45,10 +59,20 @@ public class MainPage extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Activity a = document.toObject(Activity.class);
+                                a.activityName = getDocumentByKey(document, "name");
+                                a.activityCost = getDocumentByKey(document, "cost");
+                                a.activityLocation = getDocumentByKey(document, "location");
+                                a.activityDate = getDocumentByKey(document, "end_time");
+                                a.activityTime = getDocumentByKey(document, "start_time");
+                                activityList.add(a);
+                                Log.d(TAG, document.getId() + " => " + a.getActivityCost());
                             }
+                            Log.d(TAG, String.valueOf(activityList.size()));
+                            myAdapter.setActivityList(activityList);
+                            myAdapter.notifyDataSetChanged();
                         } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
+                            Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
@@ -81,5 +105,17 @@ public class MainPage extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(MainPage.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainPage.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         }
+
+    }
+
+    private String getDocumentByKey(QueryDocumentSnapshot document, String key){
+        String value = null;
+        if (key!= null && key.length()>0){
+            Object o = document.get(key);
+            if (o != null) {
+                value = String.valueOf(o);
+            }
+        }
+        return value;
     }
 }

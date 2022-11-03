@@ -12,19 +12,19 @@
         android:layout_height="match_parent"
         tools:context=".MainPage">
 
-<!--            <com.google.android.material.appbar.AppBarLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:theme="@style/AppTheme.AppBarOverlay">-->
+        <!--            <com.google.android.material.appbar.AppBarLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:theme="@style/AppTheme.AppBarOverlay">-->
 
-<!--                <androidx.appcompat.widget.Toolbar-->
-<!--                    android:id="@+id/toolbar"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="?attr/actionBarSize"-->
-<!--                    android:background="?attr/colorPrimary"-->
-<!--                    app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+        <!--                <androidx.appcompat.widget.Toolbar-->
+        <!--                    android:id="@+id/toolbar"-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="?attr/actionBarSize"-->
+        <!--                    android:background="?attr/colorPrimary"-->
+        <!--                    app:popupTheme="@style/AppTheme.PopupOverlay" />-->
 
-<!--            </com.google.android.material.appbar.AppBarLayout>-->
+        <!--            </com.google.android.material.appbar.AppBarLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="1dp"
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme" />
@@ -43,7 +43,8 @@
             <include
                 layout="@layout/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"/>
 
             <!-- The main content view where fragments are loaded -->
             <FrameLayout
@@ -53,19 +54,11 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
         </LinearLayout>
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nvView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@android:color/white"
-            app:menu="@menu/drawer_view" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cvFilter"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="70dp"
             tools:layout_editor_absoluteY="20dp">
 
             <ImageButton
@@ -107,7 +100,7 @@
             android:id="@+id/mTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="115dp"
+            android:layout_marginTop="160dp"
             app:tabIndicatorColor="#9AFAE4">
 
             <com.google.android.material.tabs.TabItem
@@ -127,7 +120,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="225dp"
             tools:context=".MainPage">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -143,5 +136,13 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nvView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:menu="@menu/drawer_view" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

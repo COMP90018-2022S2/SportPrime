@@ -9,14 +9,6 @@
             android:id="@+id/nav_createAct"
             android:icon="@drawable/ic_baseline_edit_24"
             android:title="Create Activity" />
-        <item
-            android:id="@+id/nav_actHistory"
-            android:icon="@drawable/ic_baseline_edit_24"
-            android:title="Activity History" />
-        <item
-            android:id="@+id/nav_main"
-            android:icon="@drawable/ic_baseline_edit_24"
-            android:title="Mainpage"
-            android:checked="true"/>
+
     </group>
 </menu>

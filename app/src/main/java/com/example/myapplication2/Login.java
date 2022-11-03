@@ -60,6 +60,7 @@ public class Login extends AppCompatActivity {
                             Intent intent = new Intent(Login.this, MainActivity.class);
                             startActivity(intent);
                             Toast.makeText(Login.this, "User Login Successfully", Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
                             edtPassword.setError("Password Field can't be empty");
                         }

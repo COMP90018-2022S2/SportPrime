@@ -71,6 +71,7 @@
             android:exported="true">
 
         </activity>
+        <activity android:name=".ShowActivity"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

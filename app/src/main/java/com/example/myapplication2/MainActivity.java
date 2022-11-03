@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(MainActivity.this, FeedBackActivity.class);
+                Intent switchActivityIntent = new Intent(MainActivity.this, Profile.class);
                 startActivity(switchActivityIntent);
             }
         });

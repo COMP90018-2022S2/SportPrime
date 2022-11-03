@@ -27,24 +27,28 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/rounded_background"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:maxLines="1"
+        android:minHeight="48dp"
         android:paddingStart="20dp"
         android:paddingEnd="0dp" />
 
     <EditText
-        android:layout_marginTop="20dp"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:id="@+id/password"
-        android:hint="Password"
-        android:maxLines="1"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/rounded_background"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:minHeight="48dp"
         android:paddingStart="20dp"
-        android:paddingEnd="0dp"/>
+        android:paddingEnd="0dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -57,14 +61,16 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:visibility="invisible" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/loginBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="Login"
-                android:layout_marginTop="40dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="Login" />
     </FrameLayout>
 
     <LinearLayout

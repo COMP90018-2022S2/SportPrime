@@ -1,106 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainPage">
 
-    <!--    <com.google.android.material.appbar.AppBarLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:theme="@style/AppTheme.AppBarOverlay">-->
-
-    <!--        <androidx.appcompat.widget.Toolbar-->
-    <!--            android:id="@+id/toolbar"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="?attr/actionBarSize"-->
-    <!--            android:background="?attr/colorPrimary"-->
-    <!--            app:popupTheme="@style/AppTheme.PopupOverlay" />-->
-
-    <!--    </com.google.android.material.appbar.AppBarLayout>-->
-
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvFilter"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_marginTop="20dp"
-        tools:layout_editor_absoluteY="20dp">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/icon_badminton"
-            android:scaleType="centerInside" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="120dp"
-            android:background="@drawable/icon_rugby"
-            android:scaleType="centerInside" />
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="220dp"
-            android:background="@drawable/icon_basketball"
-            android:scaleType="centerInside" />
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="320dp"
-            android:background="@drawable/icon_pingpong"
-            android:scaleType="centerInside" />
-
-    </androidx.cardview.widget.CardView>
-
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/mTabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="115dp"
-        app:tabIndicatorColor="#9AFAE4">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find Activity" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find Gym" />
-
-
-    </com.google.android.material.tabs.TabLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="170dp"
         tools:context=".MainPage">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/activity_list"
+<!--            <com.google.android.material.appbar.AppBarLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:theme="@style/AppTheme.AppBarOverlay">-->
+
+<!--                <androidx.appcompat.widget.Toolbar-->
+<!--                    android:id="@+id/toolbar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="?attr/actionBarSize"-->
+<!--                    android:background="?attr/colorPrimary"-->
+<!--                    app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+
+<!--            </com.google.android.material.appbar.AppBarLayout>-->
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- The ActionBar displayed at the top -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme" />
+
+            <include
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- The main content view where fragments are loaded -->
+            <FrameLayout
+                android:id="@+id/flContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nvView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white"
+            app:menu="@menu/drawer_view" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvFilter"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="20dp"
+            tools:layout_editor_absoluteY="20dp">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/icon_badminton"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="120dp"
+                android:background="@drawable/icon_rugby"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="220dp"
+                android:background="@drawable/icon_basketball"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="320dp"
+                android:background="@drawable/icon_pingpong"
+                android:scaleType="centerInside" />
+
+        </androidx.cardview.widget.CardView>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="115dp"
+            app:tabIndicatorColor="#9AFAE4">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find Activity" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find Gym" />
+
+
+        </com.google.android.material.tabs.TabLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="170dp"
+            tools:context=".MainPage">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

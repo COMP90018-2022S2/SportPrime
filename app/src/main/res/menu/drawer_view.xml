@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_baseline_edit_24"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_createAct"
+            android:icon="@drawable/ic_baseline_edit_24"
+            android:title="Create Activity" />
+        <item
+            android:id="@+id/nav_actHistory"
+            android:icon="@drawable/ic_baseline_edit_24"
+            android:title="Activity History" />
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_baseline_edit_24"
+            android:title="Mainpage"
+            android:checked="true"/>
+    </group>
+</menu>

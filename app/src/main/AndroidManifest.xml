@@ -42,7 +42,8 @@
         <activity android:name=".ActivityMap"></activity>
 
         <activity android:name=".ShowNearbyGym"></activity>
-
+        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".Profile"></activity>
         <activity
             android:name="com.example.myapplication2.MapsActivityCurrentPlace"
             android:exported="true"

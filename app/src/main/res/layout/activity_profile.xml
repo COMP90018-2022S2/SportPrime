@@ -8,34 +8,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="368dp"
-        android:layout_height="116dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="411dp"
+        android:layout_height="98dp"
+        android:background="@drawable/places_autocomplete_toolbar_shadow"
+        android:backgroundTint="#06FB27"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/fullname"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="176dp"
-            android:text="fullname"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="clip_horizontal|center|clip_vertical"
+            android:text="Profile"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/user_image"
-        android:layout_width="93dp"
-        android:layout_height="101dp"
+        android:layout_width="173dp"
+        android:layout_height="160dp"
         android:layout_marginStart="159dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="159dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.411"
@@ -44,152 +45,165 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
-        android:layout_height="469dp"
+        android:layout_width="411dp"
+        android:layout_height="535dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_background2"
+        android:backgroundTint="#B8F6ED"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_image">
+
+        <TextView
+            android:id="@+id/fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_inputbox"
+            android:drawableStart="@drawable/ic_name"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="clip_horizontal|center|clip_vertical"
+            android:text="fullname"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="168dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="168dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_inputbox"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="clip_horizontal|center|clip_vertical"
             android:text="age"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/fullname" />
+
+        <TextView
+            android:id="@+id/mobile_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_inputbox"
+            android:drawableStart="@drawable/ic_phone"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="clip_horizontal|center|clip_vertical"
+            android:text="Mobile Number"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+
+        <TextView
+            android:id="@+id/description_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_inputbox"
+            android:drawableStart="@drawable/ic_des"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="clip_horizontal|center|clip_vertical"
+            android:text="Description"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mobile_textview" />
+
+        <TextView
+            android:id="@+id/email_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_inputbox"
+            android:drawableStart="@drawable/ic_email"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="clip_horizontal|center|clip_vertical"
+            android:text="Email Address"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
 
         <TextView
             android:id="@+id/gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_inputbox"
+            android:drawableStart="@drawable/ic_gender"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="clip_horizontal|center|clip_vertical"
             android:text="gender"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.434"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/age" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender">
-
-
-            <ImageView
-                android:id="@+id/email_imageview"
-                android:layout_width="34dp"
-                android:layout_height="wrap_content"
-
-                android:src="@drawable/ic_baseline_email_24"
-
-                />
-
-            <TextView
-                android:id="@+id/email_textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender">
-
-            <ImageView
-                android:id="@+id/mobile_imageview"
-                android:layout_width="34dp"
-                android:layout_height="wrap_content"
-
-
-                android:src="@drawable/ic_baseline_smartphone_24"
-
-                tools:layout_editor_absoluteX="12dp"
-                tools:layout_editor_absoluteY="142dp" />
-
-            <TextView
-                android:id="@+id/mobile_textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="137dp"
-                tools:layout_editor_absoluteY="142dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender">
-
-            <ImageView
-                android:id="@+id/description_imageview"
-                android:layout_width="34dp"
-                android:layout_height="wrap_content"
-
-
-                android:src="@drawable/ic_baseline_description_24" />
-
-            <TextView
-                android:id="@+id/description_textview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/logoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginBottom="196dp"
-            android:text="Log Out"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginBottom="196dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#1403FF"
             android:text="Edit"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logoutBtn" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logoutBtn"
+            app:layout_constraintTop_toBottomOf="@+id/description_textview" />
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#FF0000"
+            android:text="Log Out"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_textview" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

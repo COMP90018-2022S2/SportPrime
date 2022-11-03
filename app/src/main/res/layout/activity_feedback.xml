@@ -121,6 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_16sdp"
             android:background="@drawable/rounded_button"
-            android:text="Submit" />
+            android:text="Submit"
+            android:textSize="24sp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

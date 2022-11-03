@@ -61,12 +61,12 @@ public class MainPage extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        nvDrawer = (NavigationView) findViewById(R.id.nvView);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = setupDrawerToggle();
 
-
-        drawerToogle.setDrawerIndicatorEnabled(true);
+        setupDrawerContent(nvDrawer);
+        //drawerToogle.setDrawerIndicatorEnabled(true);
         drawerToggle.syncState();
 
 
@@ -158,33 +158,30 @@ public class MainPage extends AppCompatActivity {
         // and will not render the hamburger icon without it.
         return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
     }
-    private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        selectDrawerItem(menuItem);
-                        return true;
-                    }
-                });
-    }
+
 
     public void selectDrawerItem(MenuItem menuItem) {
+
         // Create a new fragment and specify the fragment to show based on nav item clicked
         Fragment fragment = null;
         Class fragmentClass;
         switch(menuItem.getItemId()) {
             case R.id.nav_profile:
-                fragmentClass = CameraActivity.class;
+                fragmentClass = Profile.class;
+                Log.d(TAG,"this is happening");
+
                 break;
             case R.id.nav_createAct:
                 fragmentClass = CreateActivity.class;
+
                 break;
             case R.id.nav_actHistory:
-                fragmentClass = CameraActivity.class;
+                fragmentClass = MapsActivityCurrentPlace.class;
+
                 break;
             case R.id.nav_main:
                 fragmentClass = MainPage.class;
+
                 break;
             default:
                 fragmentClass = MainPage.class;
@@ -206,6 +203,18 @@ public class MainPage extends AppCompatActivity {
         setTitle(menuItem.getTitle());
         // Close the navigation drawer
         mDrawer.closeDrawers();
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
     }
 
     @Override

@@ -36,7 +36,8 @@
         </activity>
         <activity android:name=".CreateActivity"></activity>
         <activity android:name=".CameraActivity"></activity>
-        <activity android:name=".MainPage"></activity>
+        <activity android:name=".MainPage"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".FeedBackActivity"></activity>
 
         <activity android:name=".ActivityMap"></activity>

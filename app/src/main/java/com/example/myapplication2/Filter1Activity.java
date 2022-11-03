@@ -41,7 +41,7 @@ public class Filter1Activity extends AppCompatActivity {
 
 
         db.collection("activity")
-                .whereEqualTo("tag", "TENNIS")
+                .whereEqualTo("tag", "BADMINTON")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

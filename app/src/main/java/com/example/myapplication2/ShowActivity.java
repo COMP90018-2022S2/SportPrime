@@ -64,6 +64,7 @@ public class ShowActivity extends AppCompatActivity{
     private String hostName;
     private FirebaseAuth mAuth;
     private String userList;
+    private Button reviewButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +86,7 @@ public class ShowActivity extends AppCompatActivity{
         location.setTextSize(10);
         joinButton = (Button) findViewById(R.id.joinActivityButton);
         activityId = getIntent().getStringExtra("id");
+        reviewButton = (Button) findViewById(R.id.reviewButton);
         Display();
     }
     public void getHost(){
@@ -152,11 +154,39 @@ public class ShowActivity extends AppCompatActivity{
                     if (hostId.equals(document.get("host_id").toString())){
                         joinButton.setText("Activity can not be cancelled");
                         joinButton.setTextSize(13);
+                        reviewButton.setVisibility(View.VISIBLE);
+                        reviewButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(view.getContext(), FeedBackActivity.class);
+                                intent.putExtra("name", name.getText());
+                                intent.putExtra("people", document.get("current_people").toString());
+                                intent.putExtra("location", location.getText());
+                                intent.putExtra("id", document.getId());
+                                view.getContext().startActivity(intent);
+                            }
+                        });
+
+
                     } else {
                         userList = document.get("user_list").toString();
                         List<String> names = new ArrayList<>(Arrays.asList(userList.split(",")));
 
                         if (names.contains(hostId)){
+                            //review button
+                            reviewButton.setVisibility(View.VISIBLE);
+                            reviewButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(view.getContext(), FeedBackActivity.class);
+                                    intent.putExtra("name", name.getText());
+                                    intent.putExtra("people", document.get("current_people").toString());
+                                    intent.putExtra("location", location.getText());
+                                    intent.putExtra("id", document.getId());
+                                    view.getContext().startActivity(intent);
+                                }
+                            });
+                            //join
                             joinButton.setText("Leave Activity");
                             joinButton.setOnClickListener(new View.OnClickListener() {
                                 @Override

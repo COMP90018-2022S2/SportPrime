@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -49,9 +50,9 @@ public class FeedBackActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     String imageUrl = "";
-    private EditText editActivityName;
-    private EditText editActivityPeople;
-    private EditText editActivityLocation;
+    private TextView editActivityName;
+    private TextView editActivityPeople;
+    private TextView editActivityLocation;
     private EditText etContent;
     private RatingBar ratingBar;
     private ImageView ivImg;
@@ -60,15 +61,22 @@ public class FeedBackActivity extends AppCompatActivity {
     List<String> permissionList = new ArrayList<>();
     private ProgressDialog progressDialog;
     private Uri imageUri;
+    private String id;
+    private String name;
+    private String location, people;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+        receiveInfo();
         progressDialog = new ProgressDialog(this);
         editActivityName = findViewById(R.id.editActivityName);
+        editActivityName.setText(name);
         editActivityPeople = findViewById(R.id.editActivityPeople);
+        editActivityPeople.setText(people);
         editActivityLocation = findViewById(R.id.editActivityLocation);
+        editActivityLocation.setText(location);
         etContent = findViewById(R.id.etContent);
         ivImg = findViewById(R.id.ivImg);
         ratingBar = findViewById(R.id.ratingBar);
@@ -84,6 +92,14 @@ public class FeedBackActivity extends AppCompatActivity {
                 getPic();
             }
         });
+    }
+    private void receiveInfo(){
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        name = intent.getStringExtra("name");
+        location = intent.getStringExtra("location");
+        people = intent.getStringExtra("people");
+
     }
 
     private void getPic() {
@@ -184,12 +200,13 @@ public class FeedBackActivity extends AppCompatActivity {
             return;
         }
         Map<String, Object> objectHashMap = new HashMap<>();
-        objectHashMap.put("name", editActivityName.getText().toString());
-        objectHashMap.put("people", editActivityPeople.getText().toString());
-        objectHashMap.put("location", editActivityLocation.getText().toString());
+        objectHashMap.put("name", name);
+        objectHashMap.put("people",people);
+        objectHashMap.put("location", location);
         objectHashMap.put("content",etContent.getText().toString());
         objectHashMap.put("rating",ratingBar.getRating());
         objectHashMap.put("image",imageUrl);
+        objectHashMap.put("id", id);
         db.collection("feedback")
                 .add(objectHashMap)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -197,15 +214,16 @@ public class FeedBackActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
 
                         new AlertDialog.Builder(FeedBackActivity.this)
-                                .setCancelable(true)
+                                .setCancelable(false)
                                 .setTitle("Tip")
                                 .setMessage("FeedBack successfully")
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
+                                        finish();
                                     }
                                 }).create().show();
+
 
                     }
                 })

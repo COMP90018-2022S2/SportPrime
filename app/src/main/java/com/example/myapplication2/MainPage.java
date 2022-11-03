@@ -117,7 +117,7 @@ public class MainPage extends AppCompatActivity {
                                 a.latitude = Double.parseDouble(getDocumentByKey(document, "location_latitude"));
                                 a.id = document.getId();
 
-                                a.location = getDocumentByKey(document, "location");
+                                a.activityLocation = getDocumentByKey(document, "location");
                                 a.activityDate = getDocumentByKey(document, "date");
 
                                 a.activityTime = getDocumentByKey(document, "start_time");

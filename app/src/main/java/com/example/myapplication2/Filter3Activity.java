@@ -54,6 +54,7 @@ public class Filter3Activity extends AppCompatActivity {
                                 a.activityLocation = getDocumentByKey(document, "location");
                                 a.activityDate = getDocumentByKey(document, "date");
                                 a.activityTime = getDocumentByKey(document, "start_time");
+                                a.id = document.getId();
                                 activityList.add(a);
                                 Log.d(TAG, document.getId() + " => " + a.getActivityCost());
                             }

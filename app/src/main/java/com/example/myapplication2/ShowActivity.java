@@ -154,9 +154,6 @@ public class ShowActivity extends AppCompatActivity{
                         joinButton.setTextSize(13);
                     } else {
                         userList = document.get("user_list").toString();
-
-//                        String user[] = userList.split(",");
-//                        Log.d(TAG, "this is zero string " +hostId);
                         List<String> names = new ArrayList<>(Arrays.asList(userList.split(",")));
 
                         if (names.contains(hostId)){

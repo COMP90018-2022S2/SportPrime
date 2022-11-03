@@ -34,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-//            id = itemView.findViewById(R.id.idDisplay);
+            id = itemView.findViewById(R.id.idDisplay);
             activityName = itemView.findViewById(R.id.tvActivityName);
             activityCost = itemView.findViewById(R.id.tvCost);
             activityLocation = itemView.findViewById(R.id.tvLocation);
@@ -75,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.activityLocation.setText(activity.getActivityLocation());
         holder.activityDate.setText(activity.getActivityDate());
         holder.activityTime.setText(activity.getActivityTime());
-//        holder.id.setText(activity.id);
+        holder.id.setText(activity.id);
     }
 
     @Override

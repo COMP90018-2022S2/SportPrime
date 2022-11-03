@@ -32,6 +32,13 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/idDisplay"
+            android:layout_width="5dp"
+            android:layout_height="6dp"
+            android:text="TextView"
+            android:visibility="invisible" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

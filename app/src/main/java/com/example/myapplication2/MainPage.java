@@ -116,8 +116,10 @@ public class MainPage extends AppCompatActivity {
                                 a.longitude = Double.parseDouble(getDocumentByKey(document, "location_longitude"));
                                 a.latitude = Double.parseDouble(getDocumentByKey(document, "location_latitude"));
                                 a.id = document.getId();
-                                a.activityLocation = getDocumentByKey(document, "location");
-                                a.activityDate = getDocumentByKey(document, "end_time");
+
+                                a.location = getDocumentByKey(document, "location");
+                                a.activityDate = getDocumentByKey(document, "date");
+
                                 a.activityTime = getDocumentByKey(document, "start_time");
                                 activityList.add(a);
                                 //Log.d(TAG, document.getId() + " => " + a.getActivityCost());

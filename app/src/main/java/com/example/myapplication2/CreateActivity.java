@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentChange.Type;
@@ -93,6 +95,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.content.Intent;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -116,11 +119,15 @@ public class CreateActivity extends AppCompatActivity {
     private double latitude;
     private double longitude;
     private String activityLocationString;
+    private String hostName;
+    private String hostId;
+    private FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_main);
@@ -137,7 +144,7 @@ public class CreateActivity extends AppCompatActivity {
         activityIsPublic = (Switch) findViewById(R.id.activityIsPublic);
         selectLocation = (Button) findViewById(R.id.selectLLocation1);
         //alertView = (TextView) findViewById(R.id.alertTextView);
-//
+        getHost();
         selectLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,6 +179,37 @@ public class CreateActivity extends AppCompatActivity {
         });
     }
 
+    public void getHost(){
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userEmail = currentUser.getEmail();
+            db = FirebaseFirestore.getInstance();
+            db.collection("users")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map<String, Object> documentData = document.getData();
+                                    String email = (String) documentData.get("Email");
+
+                                    if (userEmail != null && userEmail.equals(email)) {
+                                        hostId = document.getId();
+                                        hostName = document.get("FullName").toString();
+
+                                        return;
+                                    }
+                                }
+                                //Toast.makeText(EditProfile.this, "Can not get user information from database, no matched email address with login email", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.w(TAG, "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
+        }
+    }
+
     public void submitCreateActivity(View view)
     {
 
@@ -186,11 +224,13 @@ public class CreateActivity extends AppCompatActivity {
         activity.put("tag",activityTag.getText().toString());
         activity.put("max_people",activityMaxPeople.getText().toString());
         activity.put("current_people",1);
-        activity.put("host_id",00000);
+        activity.put("host_id",hostId);
+        activity.put("host_name", hostName);
         activity.put("is_public", activityIsPublic.isChecked());
         activity.put("location_latitude", Double.toString(latitude));
         activity.put("location_longitude", Double.toString(longitude));
         activity.put("date",activityDate.getText().toString());
+        activity.put("user_list", "");
 
         // Add a new document with a generated ID
         db.collection("activity")
@@ -206,7 +246,9 @@ public class CreateActivity extends AppCompatActivity {
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
+                                Intent intent = new Intent(view.getContext(), MainPage.class);
+                                startActivity(intent);
+                                finish();
                                 //heading to the main page
                             }
                         });

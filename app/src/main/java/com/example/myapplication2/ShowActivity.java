@@ -15,19 +15,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,9 +60,15 @@ public class ShowActivity extends AppCompatActivity{
     private TextView location;
     private String activityId;
     private Button joinButton;
+    private String hostId;
+    private String hostName;
+    private FirebaseAuth mAuth;
+    private String userList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+        getHost();
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_showactivity);
@@ -72,7 +87,36 @@ public class ShowActivity extends AppCompatActivity{
         activityId = getIntent().getStringExtra("id");
         Display();
     }
+    public void getHost(){
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userEmail = currentUser.getEmail();
+            db = FirebaseFirestore.getInstance();
+            db.collection("users")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map<String, Object> documentData = document.getData();
+                                    String email = (String) documentData.get("Email");
 
+                                    if (userEmail != null && userEmail.equals(email)) {
+                                        hostId = document.getId();
+                                        hostName = document.get("FullName").toString();
+
+                                        return;
+                                    }
+                                }
+                                //Toast.makeText(EditProfile.this, "Can not get user information from database, no matched email address with login email", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.w(TAG, "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
+        }
+    }
     private void Display(){
         DocumentReference docRef = db.collection("activity").document(activityId);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -87,7 +131,7 @@ public class ShowActivity extends AppCompatActivity{
                     end_time.setText(document.get("end_time").toString());
                     location.setText(document.get("location").toString());
                     tag.setText(document.get("tag").toString());
-                    host.setText("HOST: " + document.get("host_id").toString());
+                    host.setText("HOST: " + document.get("host_name").toString());
                     int available = Integer.parseInt(document.get("max_people").toString()) - Integer.parseInt(document.get("current_people").toString());
                     int max = Integer.parseInt(document.get("max_people").toString());
                     String str = Integer.toString(available) + "/" + Integer.toString(max) + " available";
@@ -104,10 +148,68 @@ public class ShowActivity extends AppCompatActivity{
                             startActivity(i);
                         }
                     });
+                    //check if user already host or in the activity
+                    if (hostId.equals(document.get("host_id").toString())){
+                        joinButton.setText("Activity can not be cancelled");
+                        joinButton.setTextSize(13);
+                    } else {
+                        userList = document.get("user_list").toString();
+
+//                        String user[] = userList.split(",");
+//                        Log.d(TAG, "this is zero string " +hostId);
+                        List<String> names = new ArrayList<>(Arrays.asList(userList.split(",")));
+
+                        if (names.contains(hostId)){
+                            joinButton.setText("Leave Activity");
+                            joinButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    //leave
+                                    names.remove(hostId);
+                                    String str = names.toString();
+                                    str = str.substring(1,str.length() -1);
+                                    Map<String, Object> update =new HashMap<>();
+                                    update.put("user_list", str);
+                                    update.put("current_people", String.valueOf(max-available - 1));
+                                    db.collection("activity").document(activityId).set(update,SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(ShowActivity.this, "Successfully leave", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    });
+                                }
+                            });
+                        } else {
+                            joinButton.setText("Join Activity");
+                            joinButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    //Join
+                                    names.remove("");
+                                    names.add(hostId);
+                                    String str = names.toString();
+                                    str = str.substring(1,str.length() -1).trim();
+                                    Map<String, Object> update =new HashMap<>();
+                                    update.put("user_list", str);
+                                    update.put("current_people", String.valueOf(max-available + 1));
+                                    db.collection("activity").document(activityId).set(update, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(ShowActivity.this, "Successfully join", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    }
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
         });
     }
+
+
 }

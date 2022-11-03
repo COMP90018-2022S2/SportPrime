@@ -40,15 +40,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             activityLocation = itemView.findViewById(R.id.tvLocation);
             activityDate = itemView.findViewById(R.id.tvDate);
             activityTime = itemView.findViewById(R.id.tvTime);
-//            itemView.findViewById(R.id.buttonDetail).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(view.getContext(), id.getText(), Toast.LENGTH_SHORT).show();
-//                    Intent tgt = new Intent (view.getContext(),ShowActivity.class);
-//                    tgt.putExtra("id", id.getText());
-//                    view.getContext().startActivity(tgt);
-//                }
-//            });
+
+            itemView.findViewById(R.id.buttonDetail).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent tgt = new Intent (view.getContext(),ShowActivity.class);
+                    tgt.putExtra("id", id.getText());
+                    view.getContext().startActivity(tgt);
+                }
+            });
+
 
         }
 

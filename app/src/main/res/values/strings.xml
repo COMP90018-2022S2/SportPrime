@@ -11,7 +11,7 @@
     <string name="please_enter_description">description</string>
     <string name="please_enter_end_time">end time</string>
     <string name="please_enter_location">location</string>
-    <string name="please_enter_feedback">Please leave your feedback for this activity.</string>
+    <string name="please_enter_feedback">Please share your experience here.</string>
     <string name="please_enter_max_people">max people</string>
     <string name="please_enter_cost">total cost</string>
     <string name="please_enter_tag">tag</string>

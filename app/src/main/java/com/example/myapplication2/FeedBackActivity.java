@@ -71,12 +71,12 @@ public class FeedBackActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feedback);
         receiveInfo();
         progressDialog = new ProgressDialog(this);
-        editActivityName = findViewById(R.id.editActivityName);
-        editActivityName.setText(name);
-        editActivityPeople = findViewById(R.id.editActivityPeople);
-        editActivityPeople.setText(people);
-        editActivityLocation = findViewById(R.id.editActivityLocation);
-        editActivityLocation.setText(location);
+//        editActivityName = findViewById(R.id.editActivityName);
+//        editActivityName.setText(name);
+//        editActivityPeople = findViewById(R.id.editActivityPeople);
+//        editActivityPeople.setText(people);
+//        editActivityLocation = findViewById(R.id.editActivityLocation);
+//        editActivityLocation.setText(location);
         etContent = findViewById(R.id.etContent);
         ivImg = findViewById(R.id.ivImg);
         ratingBar = findViewById(R.id.ratingBar);
@@ -220,7 +220,9 @@ public class FeedBackActivity extends AppCompatActivity {
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        finish();
+//                                        finish();
+                                        Intent switchActivityIntent = new Intent(FeedBackActivity.this, MainPage.class);
+                                        startActivity(switchActivityIntent);
                                     }
                                 }).create().show();
 

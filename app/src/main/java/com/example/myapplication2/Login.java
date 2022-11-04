@@ -93,8 +93,8 @@ public class Login extends AppCompatActivity {
          super.onStart();
          FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            //根据需要更换Profile.class
-            Intent intent = new Intent(Login.this, MainActivity.class);
+
+            Intent intent = new Intent(Login.this, MainPage.class);
             startActivity(intent);
             finish();
         }

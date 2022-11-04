@@ -26,18 +26,18 @@
 
         <activity
             android:name=".Register"></activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity android:name=".CreateActivity"></activity>
-        <activity android:name=".CameraActivity"></activity>
         <activity android:name=".MainPage"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+<!--        </activity>-->
+        <activity android:name=".CreateActivity"></activity>
+        <activity android:name=".CameraActivity"></activity>
+
         <activity android:name=".FeedBackActivity"></activity>
         <activity android:name=".Filter1Activity"></activity>
         <activity android:name=".Filter2Activity"></activity>

@@ -96,6 +96,8 @@ public class FeedBackActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 submit();
+                Intent switchActivityIntent = new Intent(FeedBackActivity.this, MainPage.class);
+                startActivity(switchActivityIntent);
             }
         });
         ivImg.setOnClickListener(new View.OnClickListener() {
@@ -232,9 +234,8 @@ public class FeedBackActivity extends AppCompatActivity {
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-//                                        finish();
-                                        Intent switchActivityIntent = new Intent(FeedBackActivity.this, MainPage.class);
-                                        startActivity(switchActivityIntent);
+                                        finish();
+
                                     }
                                 }).create().show();
 

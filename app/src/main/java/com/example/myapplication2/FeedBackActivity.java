@@ -50,9 +50,9 @@ public class FeedBackActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     String imageUrl = "";
-    private TextView editActivityName;
-    private TextView editActivityPeople;
-    private TextView editActivityLocation;
+    private EditText editActivityName;
+    private EditText editActivityPeople;
+    private EditText editActivityLocation;
     private EditText etContent;
     private RatingBar ratingBar;
     private ImageView ivImg;
@@ -71,15 +71,27 @@ public class FeedBackActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feedback);
         receiveInfo();
         progressDialog = new ProgressDialog(this);
-//        editActivityName = findViewById(R.id.editActivityName);
-//        editActivityName.setText(name);
-//        editActivityPeople = findViewById(R.id.editActivityPeople);
-//        editActivityPeople.setText(people);
-//        editActivityLocation = findViewById(R.id.editActivityLocation);
-//        editActivityLocation.setText(location);
+        editActivityName = findViewById(R.id.editActivityName);
+        if (name != null){
+            editActivityName.setText(name);
+            editActivityName.setFocusable(false);
+        }
+
+        editActivityPeople = findViewById(R.id.editActivityPeople);
+        if (people!= null){
+            editActivityPeople.setText(people);
+            editActivityPeople.setFocusable(false);
+        }
+        editActivityLocation = findViewById(R.id.editActivityLocation);
+        if (location!=null){
+            editActivityLocation.setText(location);
+            editActivityLocation.setFocusable(false);
+        }
+
         etContent = findViewById(R.id.etContent);
         ivImg = findViewById(R.id.ivImg);
         ratingBar = findViewById(R.id.ratingBar);
+
         findViewById(R.id.btSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

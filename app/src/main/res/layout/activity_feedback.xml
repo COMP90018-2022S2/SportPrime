@@ -15,46 +15,46 @@
         tools:context=".MainActivity">
 
 
-<!--        <TextView-->
-<!--            android:id="@+id/editActivityName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="@dimen/_16sdp"-->
-<!--            android:layout_marginTop="@dimen/_8sdp"-->
-<!--            android:layout_marginEnd="@dimen/_16sdp"-->
-<!--            android:background="@drawable/rounded_background2"-->
-<!--            android:fontFamily="sans-serif-smallcaps"-->
-<!--            android:gravity="center|start"-->
-<!--            android:hint="Title"-->
-<!--            android:paddingStart="4dp"-->
-<!--            android:textSize="16sp" />-->
+        <EditText
+            android:id="@+id/editActivityName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@drawable/rounded_background2"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center|start"
+            android:hint="Title"
+            android:paddingStart="4dp"
+            android:textSize="16sp" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/editActivityPeople"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="@dimen/_16sdp"-->
-<!--            android:layout_marginTop="@dimen/_8sdp"-->
-<!--            android:layout_marginEnd="@dimen/_16sdp"-->
-<!--            android:background="@drawable/rounded_background2"-->
-<!--            android:fontFamily="sans-serif-smallcaps"-->
-<!--            android:gravity="center|start"-->
-<!--            android:hint="@string/please_enter_max_people"-->
-<!--            android:paddingStart="4dp"-->
-<!--            android:textSize="16sp" />-->
+        <EditText
+            android:id="@+id/editActivityPeople"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@drawable/rounded_background2"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center|start"
+            android:hint="@string/please_enter_max_people"
+            android:paddingStart="4dp"
+            android:textSize="16sp" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/editActivityLocation"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginStart="@dimen/_16sdp"-->
-<!--            android:layout_marginTop="@dimen/_8sdp"-->
-<!--            android:layout_marginEnd="@dimen/_16sdp"-->
-<!--            android:background="@drawable/rounded_background2"-->
-<!--            android:fontFamily="sans-serif-smallcaps"-->
-<!--            android:gravity="center|start"-->
-<!--            android:hint="@string/please_enter_location"-->
-<!--            android:paddingStart="4dp" />-->
+        <EditText
+            android:id="@+id/editActivityLocation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@drawable/rounded_background2"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center|start"
+            android:hint="@string/please_enter_location"
+            android:paddingStart="4dp" />
 
         <TextView
             android:layout_width="match_parent"

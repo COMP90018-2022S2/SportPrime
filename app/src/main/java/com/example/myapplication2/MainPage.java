@@ -1,6 +1,7 @@
 package com.example.myapplication2;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -9,26 +10,18 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import android.os.Bundle;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabItem;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -37,15 +30,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.core.app.ActivityCompat;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,44 +42,40 @@ public class MainPage extends AppCompatActivity {
     FirebaseFirestore db;
     MyAdapter myAdapter;
     ArrayList<Activity> activityList;
-
-    ImageButton btnFilter1;
-    ImageButton btnFilter2;
-    ImageButton btnFilter3;
-    ImageButton btnFilter4;
-
-
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
     ActionBarDrawerToggle drawerToogle;
+    ImageButton btnFilter1;
+    ImageButton btnFilter2;
+    ImageButton btnFilter3;
+    ImageButton btnFilter4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
-
-
-        btnFilter1 = (ImageButton)findViewById(R.id.imageButton);
-        btnFilter2 = (ImageButton)findViewById(R.id.imageButton2);
-        btnFilter3 = (ImageButton)findViewById(R.id.imageButton3);
-        btnFilter4 = (ImageButton)findViewById(R.id.imageButton4);
+        btnFilter1 = (ImageButton) findViewById(R.id.imageButton);
+        btnFilter2 = (ImageButton) findViewById(R.id.imageButton2);
+        btnFilter3 = (ImageButton) findViewById(R.id.imageButton3);
+        btnFilter4 = (ImageButton) findViewById(R.id.imageButton4);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        nvDrawer = (NavigationView) findViewById(R.id.nvView);
+
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = setupDrawerToggle();
-
+        nvDrawer = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(nvDrawer);
-        //drawerToogle.setDrawerIndicatorEnabled(true);
+
+
+//        drawerToogle.setDrawerIndicatorEnabled(true);
         drawerToggle.syncState();
 
 
         mDrawer.addDrawerListener(drawerToggle);
-
 
         recyclerView = findViewById(R.id.activity_list);
         db = FirebaseFirestore.getInstance();
@@ -100,7 +83,7 @@ public class MainPage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         activityList = new ArrayList<>();
-        myAdapter = new MyAdapter(this,activityList);
+        myAdapter = new MyAdapter(this, activityList);
         recyclerView.setAdapter(myAdapter);
 
         db.collection("activity")
@@ -116,10 +99,8 @@ public class MainPage extends AppCompatActivity {
                                 a.longitude = Double.parseDouble(getDocumentByKey(document, "location_longitude"));
                                 a.latitude = Double.parseDouble(getDocumentByKey(document, "location_latitude"));
                                 a.id = document.getId();
-
                                 a.activityLocation = getDocumentByKey(document, "location");
-                                a.activityDate = getDocumentByKey(document, "date");
-
+                                a.activityDate = getDocumentByKey(document, "end_time");
                                 a.activityTime = getDocumentByKey(document, "start_time");
                                 activityList.add(a);
                                 //Log.d(TAG, document.getId() + " => " + a.getActivityCost());
@@ -138,12 +119,12 @@ public class MainPage extends AppCompatActivity {
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if("Find Gym".equals(tab.getText())){
+                if ("Find Gym".equals(tab.getText())) {
                     if (ActivityCompat.checkSelfPermission(MainPage.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainPage.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(MainPage.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
                         return;
                     }
-                    Intent intent = new Intent(MainPage.this,ShowNearbyGym.class);
+                    Intent intent = new Intent(MainPage.this, ShowNearbyGym.class);
                     startActivity(intent);
                 }
             }
@@ -162,6 +143,7 @@ public class MainPage extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(MainPage.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainPage.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
         }
+
 
         btnFilter1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,6 +175,8 @@ public class MainPage extends AppCompatActivity {
         });
 
     }
+
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -211,63 +195,41 @@ public class MainPage extends AppCompatActivity {
         // and will not render the hamburger icon without it.
         return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
     }
-
-
-    public void selectDrawerItem(MenuItem menuItem) {
-
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment = null;
-        Class fragmentClass;
-        switch(menuItem.getItemId()) {
-            case R.id.nav_profile:
-                fragmentClass = Profile.class;
-                Log.d(TAG,"this is happening");
-
-                break;
-            case R.id.nav_createAct:
-                fragmentClass = CreateActivity.class;
-
-                break;
-            case R.id.nav_actHistory:
-                fragmentClass = MapsActivityCurrentPlace.class;
-
-                break;
-            case R.id.nav_main:
-                fragmentClass = MainPage.class;
-
-                break;
-            default:
-                fragmentClass = MainPage.class;
-        }
-
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
-        // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(true);
-        // Set action bar title
-        setTitle(menuItem.getTitle());
-        // Close the navigation drawer
-        mDrawer.closeDrawers();
-    }
-
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-
                         selectDrawerItem(menuItem);
                         return true;
                     }
                 });
+    }
+
+    public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+//        Fragment fragment = null;
+//        Class fragmentClass;
+        switch(menuItem.getItemId()) {
+            case R.id.nav_profile:
+                Intent intent1 = new Intent(MainPage.this, Profile.class);
+                startActivity(intent1);
+                break;
+            case R.id.nav_createAct:
+                Intent intent2 = new Intent(MainPage.this, CreateActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.nav_feedback:
+                Intent intent3 = new Intent(MainPage.this, FeedBackActivity.class);
+                startActivity(intent3);
+                break;
+            default:
+                break;
+
+        }
+
+        menuItem.setChecked(true);
+        mDrawer.closeDrawers();
     }
 
     @Override
@@ -277,7 +239,7 @@ public class MainPage extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-        }
+    }
 
 
 
